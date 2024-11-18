@@ -22,16 +22,6 @@ public class Unit {
 
 	public static Random ran = new Random();
 
-	// 몬스터
-	public Unit(String name, int hp, int att, int def, int exp) {
-		this.name = name;
-		this.MAX_HP = hp;
-		this.hp = hp;
-		this.att = att;
-		this.def = def;
-		this.exp = exp;
-	}
-
 	// player
 	public Unit(String name, int hp, int mp, int att, int def, int MAX_EXP) {
 		this.name = name;
@@ -45,8 +35,19 @@ public class Unit {
 		this.att = att;
 		this.def = def;
 	}
+	
+	// 몬스터
+	public Unit(String name, int hp, int att, int def, int exp) {
+		this.name = name;
+		this.MAX_HP = hp;
+		this.hp = hp;
+		this.att = att;
+		this.def = def;
+		this.exp = exp;
+	}
 
-	public static String getName(String player) {
+
+	public static String newName(String player) {
 		String[] name1 = { "길동이", "둘리", "희동이", "짱구", "도라애몽", "노진구", "퉁퉁이", "훈이", "맹구", "철수", "유리", "비실이", "이슬이", "흰둥이",
 				"검둥이", "누렁이" };
 		int name1Size = ran.nextInt(name1.length);
@@ -54,13 +55,15 @@ public class Unit {
 		String name = name1[name1Size] + " " + player;
 		return name;
 	}
+	
+	
 
-	public static int getAtt() {
+	public static int newAtt() {
 		int att = ran.nextInt(15) + 1;
 		return att;
 	}
 
-	public static int getDef() {
+	public static int newDef() {
 		int def = ran.nextInt(10) + 1;
 		return def;
 	}

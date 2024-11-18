@@ -6,7 +6,7 @@ import units.Upgrade;
 public class Wizard extends Unit implements Upgrade {
 
 	public Wizard() {
-		super(units.Unit.getName("마법사"), 100, 150, units.Unit.getAtt(), units.Unit.getDef(), 10);
+		super(units.Unit.newName("마법사"), 100, 150, units.Unit.newAtt(), units.Unit.newDef(), 10);
 	}
 
 	@Override
