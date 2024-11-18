@@ -1,4 +1,4 @@
-package Players;
+package players;
 
 public class Wizard {
 
