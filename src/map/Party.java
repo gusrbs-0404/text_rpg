@@ -122,8 +122,34 @@ public class Party extends Map implements Runnable {
 	}
 
 	private void deport() {
-		// TODO Auto-generated method stub
-
+		if (party.size() == 0) {
+			System.err.println("파티원이 없습니다.");
+			return;
+		}
+		printParty();
+		try {
+			System.out.print("추방할 파티원 번호 입력 : ");
+			buffer.setLength(0);
+			String number = reader.readLine();
+			inputIndex(number);
+		} catch (Exception e) {
+		}
 	}
 
+	private void inputIndex(String number) {
+		int num = -1;
+		try {
+			num = Integer.parseInt(number) - 1;
+			if (num < 0 || num >= party.size()) {
+				System.err.println("잘못입력했습니다.");
+			}
+		} catch (Exception e) {
+			System.err.println("잘못입력했습니다.");
+			return;
+		}
+
+		System.out.printf("%s\n 를 추방합니다.\n", party.get(num));
+		party.remove(num);
+
+	}
 }
