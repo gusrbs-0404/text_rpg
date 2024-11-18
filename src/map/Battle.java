@@ -90,7 +90,7 @@ public class Battle extends Map implements Runnable {
 				System.out.println(party.get(playreIndex).name + "이(가) 치명타 공격! 데미지: " + damage);
 				break;
 			case 2:
-				damage = party.get(playreIndex).att * 2;
+				damage = party.get(playreIndex).att * 2; 
 				System.out.println(party.get(playreIndex).name + "이(가) 스킬 공격! 데미지: " + damage);
 				break;
 			default:

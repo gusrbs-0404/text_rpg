@@ -12,6 +12,6 @@ public class TextRPG {
 	}
 	
 	public void run() {
-		System.out.println("asdasd");
+		map.Map.mapThread.start();
 	}
 }
