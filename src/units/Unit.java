@@ -69,25 +69,30 @@ public class Unit {
 		return def;
 	}
 
-	public int attack(Unit unit) {
+	public static int attack(Unit unit) {
 		int attack = unit.att;
 		return attack;
 	}
 
-	public int critical() {
+	public static int critical() {
 		int critical = ran.nextInt(10) + 1;
 		return critical;
 	}
 
-	public int skill(String skillName) {
+	public static int skill(String skillName) {
 		System.out.println(skillName + "스킬 발동!");
 		int skill = ran.nextInt(10) + 1;
 		return skill;
 	}
 
-	public int exp(Unit unit) {
+	public static int exp(Unit unit) {
 		int exp = unit.exp;
 		return exp;
+	}
+
+	public static int monsterInteger() {
+		int integer = ran.nextInt(5);
+		return integer;
 	}
 
 	@Override
