@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Random;
 
 public class Map implements Runnable {
 	// 문자열 입력 - 임시정장
@@ -16,6 +17,8 @@ public class Map implements Runnable {
 	public static Map map = new Map();
 
 	public static Thread mapThread = new Thread(map);
+
+	public static Random ran = new Random();
 
 	boolean isMap = true;
 
