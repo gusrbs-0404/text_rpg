@@ -1,5 +1,7 @@
 package map;
 
+import units.Unit;
+
 public class Guild extends Map implements Runnable {
 
 	private boolean isGuild = true;
@@ -40,8 +42,20 @@ public class Guild extends Map implements Runnable {
 	}
 
 	private void inquiry() {
-		// TODO Auto-generated method stub
+		if (date.PlayerGuild.playerGuild.size() == 0) {
+			System.err.println("길드원이 없습니다.");
+			return;
+		}
+		printGuild();
+	}
 
+	private void printGuild() {
+		int count = 1;
+		for (Unit i : date.PlayerGuild.playerGuild) {
+			System.out.print(count++ + "번 | ");
+			System.out.println(i);
+		}
+		System.out.printf("총인원 수 : %d\n", date.PlayerGuild.playerGuild.size());
 	}
 
 	private void recruit() {
