@@ -3,22 +3,22 @@ package units;
 import java.util.Random;
 
 public class Unit {
-	protected String name;
-	protected int hp;
-	protected int MAX_HP;
-	protected int mp;
-	protected int MAX_MP;
-	protected int level;
-	protected int MAX_EXP;
-	protected int exp;
-	protected int att;
-	protected int def;
+	public String name;
+	public int hp;
+	public int MAX_HP;
+	public int mp;
+	public int MAX_MP;
+	public int level;
+	public int MAX_EXP;
+	public int exp;
+	public int att;
+	public int def;
 
-	protected static int upgradeHp;
-	protected static int upgradeMp;
-	protected static int upgradeAtt;
-	protected static int upgradeDef;
-	protected static int upgradeExp;
+	public static int upgradeHp;
+	public static int upgradeMp;
+	public static int upgradeAtt;
+	public static int upgradeDef;
+	public static int upgradeExp;
 
 	public static Random ran = new Random();
 
@@ -35,7 +35,7 @@ public class Unit {
 		this.att = att;
 		this.def = def;
 	}
-	
+
 	// 몬스터
 	public Unit(String name, int hp, int att, int def, int exp) {
 		this.name = name;
@@ -46,7 +46,6 @@ public class Unit {
 		this.exp = exp;
 	}
 
-
 	public static String newName(String player) {
 		String[] name1 = { "길동이", "둘리", "희동이", "짱구", "도라애몽", "노진구", "퉁퉁이", "훈이", "맹구", "철수", "유리", "비실이", "이슬이", "흰둥이",
 				"검둥이", "누렁이" };
@@ -55,8 +54,10 @@ public class Unit {
 		String name = name1[name1Size] + " " + player;
 		return name;
 	}
-	
-	
+
+//	public static String getName() {
+//		return name;
+//	}
 
 	public static int newAtt() {
 		int att = ran.nextInt(15) + 1;
