@@ -14,6 +14,11 @@ public class Unit {
 	protected int att;
 	protected int def;
 
+	protected static int upgradeHp;
+	protected static int upgradeAtt;
+	protected static int upgradeDef;
+	protected static int upgradeExp;
+
 	public static Random ran = new Random();
 
 	public Unit(String name, int hp, int mp, int att, int def) {
@@ -35,7 +40,7 @@ public class Unit {
 		this.hp = hp;
 		this.att = att;
 		this.def = def;
-		this.exp = 0;
+		this.exp = exp;
 	}
 
 	public static String getName(String player) {
@@ -67,9 +72,21 @@ public class Unit {
 		return critical;
 	}
 
-	public int Skill(String skillName) {
+	public int skill(String skillName) {
 		System.out.println(skillName + "스킬 발동!");
 		int skill = ran.nextInt(10) + 1;
 		return skill;
+	}
+
+	public int exp(Unit unit) {
+		int exp = unit.exp;
+		return exp;
+	}
+
+	@Override
+	public String toString() {
+		String msg = String.format("%s |[LV %d] | [체력 %d/%d] | [마나 %d/%d]\n\t[공격력 %d] | [방어력 %d] | [경험치 %d/%d] ", name,
+				level, hp, MAX_HP, mp, MAX_MP, att, def, exp, MAX_EXP);
+		return msg;
 	}
 }
