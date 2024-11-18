@@ -20,20 +20,26 @@ public class Party extends Map implements Runnable {
 	}
 
 	private void menu(String select) {
-
-		if (select.equals("조회")) {
+		switch (select) {
+		case "조회":
 			inquiry();
-		} else if (select.equals("영입")) {
+			break;
+		case "영입":
 			recruit();
-		} else if (select.equals("추방")) {
+			break;
+		case "추방":
 			deport();
-		} else if (select.equals("종료")) {
+			break;
+		case "종료":
 			System.out.println("파티메뉴를 종료합니다.");
 			Thread lobbyThread = new Thread(Lobby.lobby);
 			isParty = false;
 			lobbyThread.start();
+			break;
+		default:
+			System.err.println("메뉴 잘못 입력했습니다.");
+			break;
 		}
-
 	}
 
 	private void inquiry() {
