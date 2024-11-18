@@ -1,6 +1,6 @@
 package map;
 
-public class Battle extends map implements Runnable{
+public class Battle extends Map implements Runnable{
 
 	@Override
 	public void run() {

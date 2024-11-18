@@ -1,6 +1,6 @@
 package map;
 
-public class Pirate extends map implements Runnable {
+public class Pirate extends Map implements Runnable {
 
 	@Override
 	public void run() {

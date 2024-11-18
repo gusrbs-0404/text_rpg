@@ -1,6 +1,6 @@
 package map;
 
-public class Inventory extends map implements Runnable {
+public class Inventory extends Map implements Runnable {
 
 	@Override
 	public void run() {
