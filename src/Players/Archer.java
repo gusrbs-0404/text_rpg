@@ -1,4 +1,4 @@
-package Playres;
+package Players;
 
 public class Archer {
 
