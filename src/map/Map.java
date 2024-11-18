@@ -33,10 +33,8 @@ public class Map implements Runnable {
 				String select = reader.readLine();
 				menu(select);
 			} catch (Exception e) {
-
 			}
 		}
-
 	}
 
 	private void menu(String select) {
@@ -72,7 +70,7 @@ public class Map implements Runnable {
 			gameStart();
 			break;
 		case "종료":
-			System.out.println("RPG 게임 종료합니다.");
+			System.out.println("[RPG 게임 종료합니다.]");
 			break;
 		default:
 			System.err.println("메뉴 잘못 입력했습니다.");
@@ -108,7 +106,6 @@ public class Map implements Runnable {
 			System.out.println("회원가입 완료!");
 		} catch (Exception e) {
 		}
-
 	}
 
 	private void logIn() {
@@ -138,7 +135,7 @@ public class Map implements Runnable {
 	}
 
 	private void gameStart() {
-		System.out.println("RPG-GAME 을 시작합니다.");
+		System.out.println("[RPG-GAME 을 시작합니다.]");
 
 		Lobby lobby = new Lobby();
 

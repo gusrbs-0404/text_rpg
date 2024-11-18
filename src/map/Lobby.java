@@ -19,7 +19,6 @@ public class Lobby extends Map implements Runnable {
 				String select = reader.readLine();
 				menu(select);
 			} catch (Exception e) {
-
 			}
 		}
 	}
@@ -47,7 +46,7 @@ public class Lobby extends Map implements Runnable {
 			isLobby = false;
 			break;
 		case "로그아웃":
-			System.out.println("로그아웃 합니다.");
+			System.out.println("[로그아웃 합니다.]");
 			isLobby = false;
 			log = -1;
 
