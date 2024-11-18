@@ -12,7 +12,7 @@ public class Zombie extends Unit implements Upgrade {
 	}
 
 	@Override
-	public void upgrade(Unit unit) {
+	public void upgrade() {
 		if (count % 3 == 0 && count != 0) {
 			upgradeHp += 10;
 			upgradeAtt += 5;

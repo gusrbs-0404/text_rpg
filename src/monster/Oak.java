@@ -12,7 +12,7 @@ public class Oak extends Unit implements Upgrade {
 	}
 
 	@Override
-	public void upgrade(Unit unit) {
+	public void upgrade() {
 		if (count % 3 == 0 && count != 0) {
 			upgradeHp += 20;
 			upgradeAtt += 5;
