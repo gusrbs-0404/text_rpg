@@ -15,32 +15,35 @@ public class Unit {
 	protected int def;
 
 	protected static int upgradeHp;
+	protected static int upgradeMp;
 	protected static int upgradeAtt;
 	protected static int upgradeDef;
 	protected static int upgradeExp;
 
 	public static Random ran = new Random();
 
-	public Unit(String name, int hp, int mp, int att, int def) {
-		this.name = name;
-		this.MAX_HP = hp;
-		this.hp = hp;
-		this.MAX_MP = mp;
-		this.mp = mp;
-		this.level = 1;
-		this.MAX_EXP = 10;
-		this.exp = 0;
-		this.att = att;
-		this.def = def;
-	}
-
-	public Unit() {
+	// 몬스터
+	public Unit(String name, int hp, int att, int def, int exp) {
 		this.name = name;
 		this.MAX_HP = hp;
 		this.hp = hp;
 		this.att = att;
 		this.def = def;
 		this.exp = exp;
+	}
+
+	// player
+	public Unit(String name, int hp, int mp, int att, int def, int MAX_EXP) {
+		this.name = name;
+		this.MAX_HP = hp;
+		this.hp = hp;
+		this.MAX_MP = mp;
+		this.mp = mp;
+		this.level = 1;
+		this.MAX_EXP = MAX_EXP;
+		this.exp = 0;
+		this.att = att;
+		this.def = def;
 	}
 
 	public static String getName(String player) {

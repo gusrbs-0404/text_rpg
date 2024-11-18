@@ -2,5 +2,5 @@ package units;
 
 public interface Upgrade {
 	
-	public void upgrade();
+	public void upgrade(Unit unit);
 }
