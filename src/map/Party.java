@@ -1,8 +1,14 @@
 package map;
 
+import java.util.ArrayList;
+
+import units.Unit;
+
 public class Party extends Map implements Runnable {
 
 	private boolean isParty = true;
+
+	private ArrayList<Unit> party = date.PlayerParty.party;
 
 	@Override
 	public void run() {
@@ -43,12 +49,24 @@ public class Party extends Map implements Runnable {
 	}
 
 	private void inquiry() {
-		// TODO Auto-generated method stub
+		if (party.size() == 0) {
+			System.err.println("파티원이 없습니다.");
+			return;
+		}
+		printParty();
+	}
 
+	private void printParty() {
+		int count = 1;
+		for (Unit i : party) {
+			System.out.print(count++ + "번 | ");
+			System.out.println(i);
+		}
+		System.out.printf("총인원 수 : %d\n", party.size());
 	}
 
 	private void recruit() {
-		// TODO Auto-generated method stub
+		
 
 	}
 
