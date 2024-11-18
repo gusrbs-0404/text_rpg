@@ -38,7 +38,7 @@ public class Map implements Runnable {
 	}
 
 	private void menu(String select) {
-		if (log == -1 && date.Member.ids.size() == 0 && !select.equals("회원가입")) {
+		if (log == -1 && date.Member.ids.size() == 0 && !(select.equals("회원가입") || select.equals("종료"))) {
 			System.err.println("회원가입부터 진행해주세요.");
 			return;
 		}
@@ -71,6 +71,7 @@ public class Map implements Runnable {
 			break;
 		case "종료":
 			System.out.println("[RPG 게임 종료합니다.]");
+			isMap = false;
 			break;
 		default:
 			System.err.println("메뉴 잘못 입력했습니다.");
