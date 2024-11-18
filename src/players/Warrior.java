@@ -6,7 +6,7 @@ import units.Upgrade;
 public class Warrior extends Unit implements Upgrade {
 
 	public Warrior() {
-		super(units.Unit.getName("전사"), 150, 100, units.Unit.getAtt(), units.Unit.getDef());
+		super(units.Unit.getName("전사"), 150, 100, units.Unit.getAtt(), units.Unit.getDef(), 10);
 	}
 
 	@Override

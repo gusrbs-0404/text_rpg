@@ -6,7 +6,7 @@ import units.Upgrade;
 public class Archer extends Unit implements Upgrade {
 
 	public Archer() {
-		super(units.Unit.getName("궁수"), 100, 100, units.Unit.getAtt(), units.Unit.getDef());
+		super(units.Unit.getName("궁수"), 100, 100, units.Unit.getAtt(), units.Unit.getDef(), 10);
 	}
 
 	@Override
