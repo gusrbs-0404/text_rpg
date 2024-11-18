@@ -56,4 +56,20 @@ public class Unit {
 		int def = ran.nextInt(10) + 1;
 		return def;
 	}
+
+	public int attack(Unit unit) {
+		int attack = unit.att;
+		return attack;
+	}
+
+	public int critical() {
+		int critical = ran.nextInt(10) + 1;
+		return critical;
+	}
+
+	public int Skill(String skillName) {
+		System.out.println(skillName + "스킬 발동!");
+		int skill = ran.nextInt(10) + 1;
+		return skill;
+	}
 }
