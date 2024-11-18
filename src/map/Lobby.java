@@ -1,9 +1,9 @@
 package map;
 
 public class Lobby extends Map implements Runnable {
-	Lobby lobby = new Lobby();
+	public static Lobby lobby = new Lobby();
 
-	Thread lobbyThread = new Thread(lobby);
+	public static Thread lobbyThread = new Thread(lobby);
 
 	public boolean isLobby = true;
 
@@ -13,7 +13,7 @@ public class Lobby extends Map implements Runnable {
 		while (isLobby) {
 			try {
 				System.out.println("=====[LOBBY]=====");
-				System.out.println("[1. 전투] [2. 상점] [3. 길드] [4. 파티] [5. 인벤토리] [6. 종료]");
+				System.out.println("[1. 전투] [2. 상점] [3. 길드] [4. 파티] [5. 인벤토리] [6. 로그아웃]");
 				buffer.setLength(0);
 				System.out.print("메뉴 입력 : ");
 				String select = reader.readLine();
@@ -46,10 +46,14 @@ public class Lobby extends Map implements Runnable {
 			inventory();
 			isLobby = false;
 			break;
-		case "종료":
-			System.out.println("RPG 게임 종료합니다.");
+		case "로그아웃":
+			System.out.println("로그아웃 합니다.");
 			isLobby = false;
 			log = -1;
+
+			Map map = new Map();
+			Thread mapThread = new Thread(map);
+			mapThread.start();
 			break;
 		default:
 			System.err.println("메뉴 잘못 입력했습니다.");
