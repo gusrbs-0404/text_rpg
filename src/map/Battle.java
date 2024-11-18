@@ -40,7 +40,6 @@ public class Battle extends Map implements Runnable {
 			isBattle = false;
 			lobbyThread.start();
 			break;
-		}
 	}
 
 	private void zombie() {

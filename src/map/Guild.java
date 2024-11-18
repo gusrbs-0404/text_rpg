@@ -1,10 +1,14 @@
 package map;
 
+import java.util.ArrayList;
+
 import units.Unit;
 
 public class Guild extends Map implements Runnable {
 
 	private boolean isGuild = true;
+
+	ArrayList<Unit> guild = date.PlayerGuild.playerGuild;
 
 	@Override
 	public void run() {
@@ -42,7 +46,7 @@ public class Guild extends Map implements Runnable {
 	}
 
 	private void inquiry() {
-		if (date.PlayerGuild.playerGuild.size() == 0) {
+		if (guild.size() == 0) {
 			System.err.println("길드원이 없습니다.");
 			return;
 		}
@@ -51,16 +55,40 @@ public class Guild extends Map implements Runnable {
 
 	private void printGuild() {
 		int count = 1;
-		for (Unit i : date.PlayerGuild.playerGuild) {
+		for (Unit i : guild) {
 			System.out.print(count++ + "번 | ");
 			System.out.println(i);
 		}
-		System.out.printf("총인원 수 : %d\n", date.PlayerGuild.playerGuild.size());
+		System.out.printf("총인원 수 : %d\n", guild.size());
 	}
 
 	private void recruit() {
-		// TODO Auto-generated method stub
+		if (guild.size() == 10) {
+			System.err.println("최대인원 입니다!");
+			return;
+		}
 
+		int ranNum = ran.nextInt(3) + 1;
+		switch (ranNum) {
+		case 1: {
+			players.Archer archer = new players.Archer();
+			guild.add(archer);
+			System.out.println("궁수 영입완료!");
+			break;
+		}
+		case 2: {
+			players.Warrior warrior = new players.Warrior();
+			guild.add(warrior);
+			System.out.println("전사 영입완료!");
+			break;
+		}
+		case 3: {
+			players.Wizard wizard = new players.Wizard();
+			guild.add(wizard);
+			System.out.println("마법사 영입완료!");
+			break;
+		}
+		}
 	}
 
 	private void deport() {
