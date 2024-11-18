@@ -8,7 +8,7 @@ public class Guild extends Map implements Runnable {
 
 	private boolean isGuild = true;
 
-	ArrayList<Unit> guild = date.PlayerGuild.playerGuild;
+	private ArrayList<Unit> guild = date.PlayerGuild.playerGuild;
 
 	@Override
 	public void run() {
@@ -120,7 +120,7 @@ public class Guild extends Map implements Runnable {
 			return;
 		}
 
-		System.out.printf("%s\n 를 추방합니다.\n", guild.get(num));
+		System.out.printf("%s\n를 추방합니다.\n", guild.get(num));
 		guild.remove(num);
 	}
 
