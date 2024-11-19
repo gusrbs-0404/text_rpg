@@ -28,4 +28,10 @@ public class Item {
 	public int getPrice() {
 		return price;
 	}
+
+	@Override
+	public String toString() {
+		String msg = String.format("%s 장비 [공격력 : %d | 방어력 : %d]\n가격 : %d", name, attack, defense, price);
+		return msg;
+	}
 }
