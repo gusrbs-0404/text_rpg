@@ -14,6 +14,7 @@ public class PlayerItem {
 
 	public static void equip(Item item) {
 		intemMap.put(item.getName(), item);
+		Inventory.remove(item);
 		input(item.getName() + "이(가) 장착되었습니다.");
 	}
 
@@ -24,12 +25,16 @@ public class PlayerItem {
 
 	public static void printPlayreItem(Unit unit) {
 		input(unit.name + "의 장비 목록:");
-		
+		for (String key : intemMap.keySet()) {
+			Item item = intemMap.get(key);
+			input(key + "\t");
+			input(item);
+		}
 	}
 
-	public static void input(String msg) {
+	public static void input(Object object) {
 		try {
-			wirter.append(msg + "\n");
+			wirter.append(object + "\n");
 			wirter.flush();
 		} catch (Exception e) {
 		}

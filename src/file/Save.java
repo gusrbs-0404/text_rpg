@@ -1,13 +1,20 @@
 package file;
 
+import java.io.File;
 import java.io.FileWriter;
 
 public class Save extends File {
 
 	public void save(String date) {
-		fileWriter = null;
 
 		String txt = date();
+		try {
+			file = new File(fileName);
+			fileWriter = new FileWriter(file);
+			fileWriter.write(data);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	private String date() {

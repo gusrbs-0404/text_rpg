@@ -91,7 +91,7 @@ public class Unit {
 	}
 
 	public static int monsterInteger() {
-		int integer = ran.nextInt(5);
+		int integer = 1;
 		return integer;
 	}
 

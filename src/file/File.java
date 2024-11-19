@@ -14,14 +14,14 @@ public class File {
 	public ArrayList<Unit> playerGuild = date.PlayerGuild.playerGuild;
 	public ArrayList<Unit> party = date.PlayerParty.party;
 	public ArrayList<Item> inventory = date.Inventory.inventory;
-	int price = date.Price.getPrice();
+	public int price = date.Price.getPrice();
 	// 파티원 장비
 	// 장착중인아이템
-	public FileWriter fileWriter;
-	public FileReader fileReader;
-	public BufferedReader bufferedReader;
-	public File file;
+	public static FileWriter fileWriter;
+	public static FileReader fileReader;
+	public static BufferedReader bufferedReader;
+	public static File file;
 
-	public String fileName = "RPG-GAME.txt";
+	public static String fileName = "RPG-GAME.txt";
 
 }

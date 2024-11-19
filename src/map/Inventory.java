@@ -2,10 +2,12 @@ package map;
 
 import java.util.ArrayList;
 
+import date.PlayerItem;
 import items.Item;
+import units.Unit;
 
 public class Inventory extends Map implements Runnable {
-
+	private ArrayList<Unit> party = date.PlayerParty.party;
 	private boolean isInventory = true;
 
 	@Override
@@ -43,7 +45,40 @@ public class Inventory extends Map implements Runnable {
 	}
 
 	private void equipment() {
+		printParty();
+		// 장비 확인할 파티원 선택하고
+		// 장비 보여주고
+		// 장비 장착 해제할꺼 선택하고
+		// 해제하기
 		
+		try {
+			input("장비 확인할 파티원 선택 : ");
+			String number = reader.readLine();
+			Unit player = getPartyPlayer(number);
+			
+		} catch (Exception e) {
+		}
+	}
+
+	private Unit getPartyPlayer(String number) {
+		// 파티플레이어 선택 메소드
+		if (party.size() == 0) {
+			input("파티원이 없습니다.");
+			return null;
+		}
+
+		int num = -1;
+		try {
+			num = Integer.parseInt(number) - 1;
+			if (num < 0 || num >= party.size()) {
+				input("잘못입력했습니다.");
+				return null;
+			}
+		} catch (Exception e) {
+		}
+
+		Unit player = party.get(num);
+		return player;
 	}
 
 	private void inventory() {
@@ -71,12 +106,15 @@ public class Inventory extends Map implements Runnable {
 			if (num < 0 || num >= date.Inventory.size()) {
 				input("잘못입력했습니다.");
 			}
-			
-			if(date.Inventory.getItem(num).name.equals("몬스터 정수")) {
+
+			if (date.Inventory.getItem(num).name.equals("몬스터 정수")) {
 				input("몬스터 정수는 착용 할 수 없습니다.");
 			}
-
-			date.PlayerItem.equip(date.Inventory.getItem(num));
+			
+			// 장착할 장비 아이템 선택하고
+			// 파티원 선택
+			// 파티원 장비 상태 출려갷서 보여주고
+			// 장비 장착 
 		} catch (Exception e) {
 			return;
 		}
@@ -88,5 +126,14 @@ public class Inventory extends Map implements Runnable {
 			input(i + 1 + "번 아이템");
 			input(item.get(i));
 		}
+	}
+
+	private void printParty() {
+		int count = 1;
+		for (Unit i : party) {
+			input(count++ + "번 | ");
+			input(i);
+		}
+		input("총인원 수 : " + party.size());
 	}
 }
