@@ -22,6 +22,10 @@ public class Inventory {
 		return inventory.size();
 	}
 
+	public static Item getItem(int index) {
+		return inventory.get(index);
+	}
+
 	public static void printInventory() {
 		for (int i = 0; i < inventory.size(); i++) {
 			input(i + 1 + "번 아이템");
