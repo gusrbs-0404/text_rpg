@@ -1,5 +1,6 @@
 package map;
 
+import java.io.BufferedWriter;
 import java.util.ArrayList;
 
 import monster.Zombie;
@@ -19,10 +20,9 @@ public class Battle extends Map implements Runnable {
 		isBattle = true;
 		while (isBattle) {
 			try {
-				System.out.println("=====[BATTLE]=====");
-				System.out.println("[1. 좀비] [2. 오크(LV3↑)] [3. 드래곤(LV5↑)] [4. 종료]");
-				buffer.setLength(0);
-				System.out.print("메뉴 입력 : ");
+				input("=====[BATTLE]=====");
+				input("[1. 좀비] [2. 오크(LV3↑)] [3. 드래곤(LV5↑)] [4. 종료]");
+				input("메뉴 입력 : ");
 				String select = reader.readLine();
 				menu(select);
 			} catch (Exception e) {
@@ -35,7 +35,7 @@ public class Battle extends Map implements Runnable {
 
 		// 예외처리 - 파티 4명 다 모였을때 입장가능
 		if (party.size() < 4) {
-			System.err.println("충분한 파티원을 모집하고 전투하세요!");
+			input("충분한 파티원을 모집하고 전투하세요!");
 			return;
 		}
 
@@ -50,10 +50,13 @@ public class Battle extends Map implements Runnable {
 			dragon();
 			break;
 		case "종료":
-			System.out.println("전투 종료합니다.");
-			Thread lobbyThread = new Thread(Lobby.lobby);
-			isBattle = false;
-			lobbyThread.start();
+			try {
+				input("전투 종료합니다.");
+				Thread lobbyThread = new Thread(Lobby.lobby);
+				isBattle = false;
+				lobbyThread.start();
+			} catch (Exception e) {
+			}
 			break;
 		}
 	}
@@ -75,6 +78,7 @@ public class Battle extends Map implements Runnable {
 
 	private void battlePlay(Unit monster) {
 		boolean isBattle = true;
+
 		while (isBattle) {
 			int action = action();
 			int playreIndex = actionplayerIndex();
@@ -83,15 +87,15 @@ public class Battle extends Map implements Runnable {
 			switch (action) {
 			case 0:
 				damage = party.get(playreIndex).att;
-				System.out.println(party.get(playreIndex).name + "이(가) 일반 공격! 데미지: " + damage);
+				input(party.get(playreIndex).name + "이(가) 일반 공격! 데미지: " + damage);
 				break;
 			case 1:
 				damage = party.get(playreIndex).att + party.get(playreIndex).att / 2;
-				System.out.println(party.get(playreIndex).name + "이(가) 치명타 공격! 데미지: " + damage);
+				input(party.get(playreIndex).name + "이(가) 치명타 공격! 데미지: " + damage);
 				break;
 			case 2:
-				damage = party.get(playreIndex).att * 2; 
-				System.out.println(party.get(playreIndex).name + "이(가) 스킬 공격! 데미지: " + damage);
+				damage = party.get(playreIndex).att * 2;
+				input(party.get(playreIndex).name + "이(가) 스킬 공격! 데미지: " + damage);
 				break;
 			default:
 				damage = 0;
@@ -99,19 +103,20 @@ public class Battle extends Map implements Runnable {
 			}
 		}
 
-		System.out.println("남은 몬스터의 체력 : " + monster.hp);
+		input("남은 몬스터의 체력 : " + monster.hp);
 
 		if (!isHpMonster(monster)) {
-			System.out.println("플레이어 승리!");
+			input("플레이어 승리!");
 
 			if (ranMonsterInteger() == units.Unit.monsterInteger()) {
-				System.out.println("몬스터 정수를 얻었다!");
+				input("몬스터 정수를 얻었다!");
 //				Item monsterInteger = new Item("몬스터 정수", 1000);
 //				RPGGame.inventory.add(monsterInteger);
 			}
 			isBattle = false;
 			return;
 		}
+
 	}
 
 	private int action() {

@@ -12,10 +12,9 @@ public class Lobby extends Map implements Runnable {
 		isLobby = true;
 		while (isLobby) {
 			try {
-				System.out.println("=====[LOBBY]=====");
-				System.out.println("[1. 전투] [2. 상점] [3. 길드] [4. 파티] [5. 인벤토리] [6. 로그아웃]");
-				buffer.setLength(0);
-				System.out.print("메뉴 입력 : ");
+				input("=====[LOBBY]=====");
+				input("[1. 전투] [2. 상점] [3. 길드] [4. 파티] [5. 인벤토리] [6. 로그아웃]");
+				input("메뉴 입력 : ");
 				String select = reader.readLine();
 				menu(select);
 			} catch (Exception e) {
@@ -46,7 +45,7 @@ public class Lobby extends Map implements Runnable {
 			isLobby = false;
 			break;
 		case "로그아웃":
-			System.out.println("[로그아웃 합니다.]");
+			input("[로그아웃 합니다.]");
 			isLobby = false;
 			log = -1;
 
@@ -55,7 +54,7 @@ public class Lobby extends Map implements Runnable {
 			mapThread.start();
 			break;
 		default:
-			System.err.println("메뉴 잘못 입력했습니다.");
+			input("메뉴 잘못 입력했습니다.");
 			break;
 		}
 	}

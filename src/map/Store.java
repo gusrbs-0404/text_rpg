@@ -9,10 +9,9 @@ public class Store extends Map implements Runnable {
 		isStore = true;
 		while (isStore) {
 			try {
-				System.out.println("=====[STORE]=====");
-				System.out.println("[1. 구매] [2. 판매] [3. 종료]");
-				buffer.setLength(0);
-				System.out.print("메뉴 입력 : ");
+				input("=====[STORE]=====");
+				input("[1. 구매] [2. 판매] [3. 종료]");
+				input("메뉴 입력 : ");
 				String select = reader.readLine();
 				menu(select);
 			} catch (Exception e) {
@@ -29,14 +28,14 @@ public class Store extends Map implements Runnable {
 			break;
 		}
 		case "종료": {
-			System.out.println("상점에서 나왔습니다.");
+			input("상점에서 나왔습니다.");
 			Thread lobbyThread = new Thread(Lobby.lobby);
 			isStore = false;
 			lobbyThread.start();
 			break;
 		}
 		default:
-			System.err.println("메뉴 잘못 입력했습니다.");
+			input("메뉴 잘못 입력했습니다.");
 			break;
 		}
 	}

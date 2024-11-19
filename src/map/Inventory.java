@@ -8,10 +8,9 @@ public class Inventory extends Map implements Runnable {
 	public void run() {
 		while (isInventory) {
 			try {
-				System.out.println("=====[INVENTORY]=====");
-				System.out.println("[1. 장비] [2. 가방] [3. 종료]");
-				buffer.setLength(0);
-				System.out.print("메뉴 입력 : ");
+				input("=====[INVENTORY]=====");
+				input("[1. 장비] [2. 가방] [3. 종료]");
+				input("메뉴 입력 : ");
 				String select = reader.readLine();
 				menu(select);
 			} catch (Exception e) {
@@ -28,13 +27,13 @@ public class Inventory extends Map implements Runnable {
 			inventory();
 			break;
 		case "종료":
-			System.out.println("가방을 닫았습니다.");
+			input("가방을 닫았습니다.");
 			Thread lobbyThread = new Thread(Lobby.lobby);
 			isInventory = false;
 			lobbyThread.start();
 			break;
 		default:
-			System.err.println("메뉴 잘못 입력했습니다.");
+			input("메뉴 잘못 입력했습니다.");
 			break;
 		}
 	}

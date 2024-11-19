@@ -15,10 +15,9 @@ public class Party extends Map implements Runnable {
 	public void run() {
 		while (isParty) {
 			try {
-				System.out.println("=====[PARTY]=====");
-				System.out.println("[1. 조회] [2. 영입] [3. 추방] [4. 종료]");
-				buffer.setLength(0);
-				System.out.print("메뉴 입력 : ");
+				input("=====[PARTY]=====");
+				input("[1. 조회] [2. 영입] [3. 추방] [4. 종료]");
+				input("메뉴 입력 : ");
 				String select = reader.readLine();
 				menu(select);
 			} catch (Exception e) {
@@ -38,20 +37,20 @@ public class Party extends Map implements Runnable {
 			deport();
 			break;
 		case "종료":
-			System.out.println("파티메뉴를 종료합니다.");
+			input("파티메뉴를 종료합니다.");
 			Thread lobbyThread = new Thread(Lobby.lobby);
 			isParty = false;
 			lobbyThread.start();
 			break;
 		default:
-			System.err.println("메뉴 잘못 입력했습니다.");
+			input("메뉴 잘못 입력했습니다.");
 			break;
 		}
 	}
 
 	private void inquiry() {
 		if (party.size() == 0) {
-			System.err.println("파티원이 없습니다.");
+			input("파티원이 없습니다.");
 			return;
 		}
 		printParty();
@@ -60,35 +59,35 @@ public class Party extends Map implements Runnable {
 	private void printGuild() {
 		int count = 1;
 		for (Unit i : guild) {
-			System.out.print(count++ + "번 | ");
-			System.out.println(i);
+			input(count++ + "번 | ");
+			input(i);
 		}
-		System.out.printf("총인원 수 : %d\n", guild.size());
+		input("총인원 수 : " + guild.size());
 	}
 
 	private void printParty() {
 		int count = 1;
 		for (Unit i : party) {
-			System.out.print(count++ + "번 | ");
-			System.out.println(i);
+			input(count++ + "번 | ");
+			input(i);
 		}
-		System.out.printf("총인원 수 : %d\n", party.size());
+		input("총인원 수 : " + party.size());
 	}
 
 	private void recruit() {
 		if (party.size() == 4) {
-			System.err.println("파티원 모집이 끝났습니다.");
+			input("파티원 모집이 끝났습니다.");
 			return;
 		}
 
 		if (guild.size() == 0) {
-			System.err.println("길드원이 없습니다.");
+			input("길드원이 없습니다.");
 			return;
 		}
 
 		printGuild();
 		try {
-			System.out.print("파티 모집할 길드원 번호 입력 : ");
+			input("파티 모집할 길드원 번호 입력 : ");
 			buffer.setLength(0);
 			String number = reader.readLine();
 			inputParty(number);
@@ -102,33 +101,33 @@ public class Party extends Map implements Runnable {
 		try {
 			num = Integer.parseInt(number) - 1;
 			if (num < 0 || num >= guild.size()) {
-				System.err.println("잘못입력했습니다.");
+				input("잘못입력했습니다.");
 			}
 		} catch (Exception e) {
-			System.err.println("잘못입력했습니다.");
+			input("잘못입력했습니다.");
 			return;
 		}
 
 		Unit unit = guild.get(num);
 		for (Unit i : party) {
 			if (i.equals(unit)) {
-				System.err.println("이미 파티에 모집한 길드원입니다.");
+				input("이미 파티에 모집한 길드원입니다.");
 				return;
 			}
 		}
 
-		System.out.printf("%s\n를 파티모집 합니다.\n", unit);
+		input(unit + " 를 파티모집 합니다.");
 		party.add(unit);
 	}
 
 	private void deport() {
 		if (party.size() == 0) {
-			System.err.println("파티원이 없습니다.");
+			input("파티원이 없습니다.");
 			return;
 		}
 		printParty();
 		try {
-			System.out.print("추방할 파티원 번호 입력 : ");
+			input("추방할 파티원 번호 입력 : ");
 			buffer.setLength(0);
 			String number = reader.readLine();
 			inputIndex(number);
@@ -141,14 +140,14 @@ public class Party extends Map implements Runnable {
 		try {
 			num = Integer.parseInt(number) - 1;
 			if (num < 0 || num >= party.size()) {
-				System.err.println("잘못입력했습니다.");
+				input("잘못입력했습니다.");
 			}
 		} catch (Exception e) {
-			System.err.println("잘못입력했습니다.");
+			input("잘못입력했습니다.");
 			return;
 		}
 
-		System.out.printf("%s\n 를 추방합니다.\n", party.get(num));
+		input(party.get(num) + "를 추방합니다.\n");
 		party.remove(num);
 
 	}
