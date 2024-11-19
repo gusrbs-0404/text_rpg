@@ -1,8 +1,15 @@
 package map;
 
+import date.StoreItem;
+
 public class Store extends Map implements Runnable {
+	private final int WEAPON = 1;
+	private final int ARMOR = 2;
+	private final int MONSTERINTEGER = 3;
 
 	private boolean isStore = true;
+
+	private items.Item storeIntem;
 
 	@Override
 	public void run() {
@@ -22,9 +29,11 @@ public class Store extends Map implements Runnable {
 	private void menu(String select) {
 		switch (select) {
 		case "구매": {
+			purchase();
 			break;
 		}
 		case "판매": {
+			sale();
 			break;
 		}
 		case "종료": {
@@ -40,9 +49,56 @@ public class Store extends Map implements Runnable {
 		}
 	}
 
+	private void setStoreItem() {
+		date.StoreItem.clear();
+		for (int i = 0; i < 6; i++) {
+			int ranNum = ran.nextInt(3) + 1;
+			if (ranNum == WEAPON) {
+				items.ItemWeapon weapon = new items.ItemWeapon("무기", ranAttack(), ranPrice());
+				StoreItem.add(weapon);
+			} else if (ranNum == ARMOR) {
+				items.ItemArmor armor = new items.ItemArmor("갑옷", ranDefense(), ranPrice());
+				StoreItem.add(armor);
+			} else if (ranNum == MONSTERINTEGER) {
+				items.ItemMonsterInteger armor = new items.ItemMonsterInteger("몬스터 정수", ranPrice());
+				StoreItem.add(armor);
+			}
+		}
+		date.StoreItem.printInventory();
+	}
+
+	private int ranAttack() {
+		int ranAttack = ran.nextInt(20) + 1;
+		return ranAttack;
+
+	}
+
+	private int ranDefense() {
+		int ranDefense = ran.nextInt(15) + 1;
+		return ranDefense;
+
+	}
+
+	private int ranPrice() {
+		int ranPrice = ran.nextInt(5000) + 500;
+		return ranPrice;
+	}
+
 	private void purchase() {
+		setStoreItem();
+
+		try {
+			input("=====[STOREITEM]=====");
+			input("구매할 아이템 번호 입력 : ");
+			String number = reader.readLine();
+			inputPurcgase(number);
+		} catch (Exception e) {
+		} 
+	}
+
+	private void inputPurcgase(String number) {
 		// TODO Auto-generated method stub
- 
+
 	}
 
 	private void sale() {
