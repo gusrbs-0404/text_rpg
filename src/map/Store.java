@@ -64,7 +64,7 @@ public class Store extends Map implements Runnable {
 				StoreItem.add(armor);
 			}
 		}
-		date.StoreItem.printInventory();
+		date.StoreItem.printStoreItem();
 	}
 
 	private int ranAttack() {
@@ -93,12 +93,29 @@ public class Store extends Map implements Runnable {
 			String number = reader.readLine();
 			inputPurcgase(number);
 		} catch (Exception e) {
-		} 
+		}
 	}
 
 	private void inputPurcgase(String number) {
-		// TODO Auto-generated method stub
+		int num = -1;
+		try {
+			num = Integer.parseInt(number) - 1;
+			if (num < 0 || num > date.StoreItem.size()) {
+				input("잘못입력했습니다.");
+			}
+		} catch (Exception e) {
+			input("잘못입력했습니다.");
+			return;
+		}
 
+		if (date.Price.getPrice() < date.StoreItem.getPrice(num)) {
+			input("파티의 돈이 부족합니다!!!");
+			return;
+		}
+
+		input(date.StoreItem.getName(num) + " 아이템을 구매합니다.");
+		input("파티 소지금 : " + date.Price.getPrice());
+		date.Inventory.add(date.StoreItem.getItem(num));
 	}
 
 	private void sale() {
