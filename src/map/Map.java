@@ -193,8 +193,8 @@ public class Map implements Runnable {
 		}
 	}
 	
-	public void input(Unit unit) {
-		try {
+	public void input(Unit unit) { 
+		try {   
 			wirter.append(unit + "\n");
 			wirter.flush();
 		} catch (Exception e) {

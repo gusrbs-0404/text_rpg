@@ -88,7 +88,7 @@ public class Party extends Map implements Runnable {
 		printGuild();
 		try {
 			input("파티 모집할 길드원 번호 입력 : ");
-			buffer.setLength(0);
+			buffer.setLength(0); 
 			String number = reader.readLine();
 			inputParty(number);
 		} catch (Exception e) {

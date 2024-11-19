@@ -42,7 +42,7 @@ public class Store extends Map implements Runnable {
 
 	private void purchase() {
 		// TODO Auto-generated method stub
-
+ 
 	}
 
 	private void sale() {

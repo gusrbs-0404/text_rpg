@@ -86,7 +86,7 @@ public class Lobby extends Map implements Runnable {
 
 		partyThread.start();
 	}
-
+ 
 	private void inventory() {
 		Inventory inventory = new Inventory();
 		Thread inventoryThread = new Thread(inventory);
