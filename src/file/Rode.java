@@ -1,5 +1,5 @@
 package file;
 
-public class Rode {
+public class Rode extends File {
 
 }
