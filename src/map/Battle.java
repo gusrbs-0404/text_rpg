@@ -94,11 +94,11 @@ public class Battle extends Map implements Runnable {
 			switch (action) {
 			case 0:
 				damage = party.get(playreIndex).att;
-				input(party.get(playreIndex).name + "이(가) 일반 공격! 데미지: " + damage);
+				input(party.get(playreIndex).name + " 일반 공격! 데미지: " + damage);
 				break;
 			case 1:
 				damage = party.get(playreIndex).att + party.get(playreIndex).att / 2;
-				input(party.get(playreIndex).name + "이(가) 치명타 공격! 데미지: " + damage);
+				input(party.get(playreIndex).name + " 치명타 공격! 데미지: " + damage);
 				break;
 			case 2:
 				damage = party.get(playreIndex).att * 2;
@@ -117,7 +117,7 @@ public class Battle extends Map implements Runnable {
 			monster.hp -= damage;
 
 			if (!isHpUnit(monster)) {
-				input(monster.name + " 의 남은 체력 : " + monster.hp);
+				input(monster.name + "의 남은 체력 : " + monster.hp);
 				input("플레이어 승리!");
 				exp(monster);
 				if (ranMonsterInteger() == units.Unit.monsterInteger()) {
@@ -129,7 +129,7 @@ public class Battle extends Map implements Runnable {
 				return;
 			}
 
-			input(monster.name + " 의 남은 체력 : " + monster.hp);
+			input(monster.name + "의 남은 체력 : " + monster.hp);
 
 			action = action();
 			damage = 0;
@@ -158,7 +158,7 @@ public class Battle extends Map implements Runnable {
 				input(party.get(playreIndex).name + "이 죽었다..");
 			}
 
-			input(party.get(playreIndex).name + " 의 남은 체력 : " + party.get(playreIndex).hp);
+			input(party.get(playreIndex).name + "의 남은 체력 : " + party.get(playreIndex).hp);
 
 			if (playerCount == 0) {
 				input("플레이어가 모두 죽었다! 몬스터 승리!");
@@ -181,8 +181,8 @@ public class Battle extends Map implements Runnable {
 		for (Unit i : party) {
 			i.exp += monster.exp;
 			if (i.exp >= i.MAX_EXP) {
-				i.level++;
 				i.exp = i.MAX_EXP - i.exp;
+				i.level++;
 				i.MAX_EXP += 5;
 				i.att += 5;
 				i.def += 5;
