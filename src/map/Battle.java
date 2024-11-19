@@ -133,7 +133,6 @@ public class Battle extends Map implements Runnable {
 
 			action = action();
 			damage = 0;
-			playreIndex = actionplayerIndex();
 
 			switch (action) {
 			case 0:
