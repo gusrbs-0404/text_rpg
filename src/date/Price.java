@@ -6,6 +6,12 @@ public class Price {
 	public static int getPrice() {
 		return Price;
 	}
+
+	public static void minusPrice(int price) {
+		Price -= price;
+	}
 	
-	
+	public static void plusPrice(int price) {
+		Price += price;
+	}
 }
