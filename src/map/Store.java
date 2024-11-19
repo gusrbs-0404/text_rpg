@@ -1,6 +1,9 @@
 package map;
 
+import java.util.ArrayList;
+
 import date.StoreItem;
+import items.Item;
 
 public class Store extends Map implements Runnable {
 	private final int WEAPON = 1;
@@ -64,7 +67,7 @@ public class Store extends Map implements Runnable {
 				StoreItem.add(armor);
 			}
 		}
-		date.StoreItem.printStoreItem();
+		print(date.StoreItem.storeItem);
 	}
 
 	private int ranAttack() {
@@ -100,7 +103,7 @@ public class Store extends Map implements Runnable {
 		int num = -1;
 		try {
 			num = Integer.parseInt(number) - 1;
-			if (num < 0 || num > date.StoreItem.size()) {
+			if (num < 0 || num >= date.StoreItem.size()) {
 				input("잘못입력했습니다.");
 			}
 		} catch (Exception e) {
@@ -114,13 +117,59 @@ public class Store extends Map implements Runnable {
 		}
 
 		input(date.StoreItem.getName(num) + " 아이템을 구매합니다.");
+
+		// 파티 소지금 뺴기 해야됨
+		date.Price.minusPrice(date.StoreItem.getPrice(num));
+
 		input("파티 소지금 : " + date.Price.getPrice());
+
 		date.Inventory.add(date.StoreItem.getItem(num));
 	}
 
 	private void sale() {
-		// TODO Auto-generated method stub
+		if (date.Inventory.size() == 0) {
+			input("인벤토리에 아무것도 없다..");
+			return;
+		}
+		// 판매
+		// 인벤토리의 목록을 보여준다
+		print(date.Inventory.inventory);
 
+		try {
+			input("=====[INVENTORY]=====");
+			input("판매할 아이템 번호 입력 : ");
+			String number = reader.readLine();
+			inputSale(number);
+		} catch (Exception e) {
+		}
+
+	}
+
+	private void inputSale(String number) {
+		int num = -1;
+		try {
+			num = Integer.parseInt(number) - 1;
+			if (num < 0 || num >= date.Inventory.size()) {
+				System.err.println("잘못입력했습니다.");
+			}
+		} catch (Exception e) {
+			System.err.println("잘못입력했습니다.");
+			return;
+		}
+
+		input(date.Inventory.getItem(num) + " 아이템을 판매합니다.");
+
+		date.Price.plusPrice(date.Inventory.getItem(num).price);
+		input("파티 소지금 : " + date.Price.getPrice());
+
+		date.Inventory.remove(date.Inventory.getItem(num));
+	}
+
+	private void print(ArrayList<Item> item) {
+		for (int i = 0; i < item.size(); i++) {
+			input(i + 1 + "번 아이템");
+			input(item.get(i));
+		}
 	}
 
 }
