@@ -14,10 +14,6 @@ public class StoreItem {
 		storeItem.add(item);
 	}
 
-	public static void remove(Item item) {
-		storeItem.remove(item);
-	}
-
 	public static void clear() {
 		storeItem.clear();
 	}
@@ -35,6 +31,10 @@ public class StoreItem {
 
 	public static String getName(int index) {
 		return storeItem.get(index).name;
+	}
+
+	public static Item getItem(int index) {
+		return storeItem.get(index);
 	}
 
 	public static int size() {
