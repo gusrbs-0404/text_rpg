@@ -43,7 +43,7 @@ public class Inventory extends Map implements Runnable {
 	}
 
 	private void equipment() {
-		date.PlayerItem.printPlayreItem();
+		
 	}
 
 	private void inventory() {
