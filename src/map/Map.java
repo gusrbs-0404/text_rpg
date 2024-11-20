@@ -32,7 +32,7 @@ public class Map implements Runnable {
 		while (isMap) {
 			try {
 				input("=====[RPG-GAME]=====");
-				input("[1. 회원가입] [2. 로그인] [3. 로그아웃] [4. 회원탈퇴] [5. 게임시작] [6. 종료]");
+				input("[1. 회원가입] [2. 로그인] [3. 로그아웃] [4. 회원탈퇴]\n[5. 게임시작] [6. 파일저장] [7. 파일로드] [8. 종료]");
 				input("메뉴 입력 : ");
 				String select = reader.readLine();
 				menu(select);
@@ -43,7 +43,7 @@ public class Map implements Runnable {
 
 	private void menu(String select) {
 
-		if (log == -1 && date.Member.ids.size() == 0 && !(select.equals("회원가입") || select.equals("종료"))) {
+		if (log == -1 && date.Member.ids.size() == 0 && !(select.equals("회원가입") || select.equals("종료") ||select.equals("파일저장") || select.equals("파일로드"))) {
 			input("회원가입부터 진행해주세요.");
 			return;
 		}
@@ -77,6 +77,14 @@ public class Map implements Runnable {
 		case "종료":
 			input("[RPG 게임 종료합니다.]");
 			isMap = false;
+			break;
+		case "파일저장":
+			input("[파일 저장합니다.]");
+			file.File.saveData();
+			break;
+		case "파일로드":
+			input("[파일 로드합니다.]");
+			file.File.loadData();
 			break;
 		default:
 			input("메뉴 잘못 입력했습니다.");

@@ -45,6 +45,20 @@ public class Unit {
 		this.def = def;
 		this.exp = exp;
 	}
+	
+	// 파일로드
+	public Unit(String name, int hp, int MAX_HP ,int mp, int MAX_MP,int att, int def, int exp,int MAX_EXP, int level) {
+		this.name = name;
+		this.hp = hp;
+		this.MAX_HP = hp;
+		this.mp = mp;
+		this.MAX_MP = mp;
+		this.att = att;
+		this.def = def;
+		this.exp = exp;
+		this.MAX_EXP = MAX_EXP;
+		this.level = level;
+	}
 
 	public static String newName(String player) {
 		String[] name1 = { "길동이", "둘리", "희동이", "짱구", "도라애몽", "노진구", "퉁퉁이", "훈이", "맹구", "철수", "유리", "비실이", "이슬이", "흰둥이",
