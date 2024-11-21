@@ -76,12 +76,14 @@ public class File {
 			// 돈
 			fileWriter.write(price + "\n");
 
+			fileWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static void loadData() {
+
 		try {
 			fileReader = new FileReader(fileName);
 			bufferedReader = new BufferedReader(fileReader);
@@ -116,7 +118,7 @@ public class File {
 
 			// 파티 사이즈
 			int partySize = Integer.parseInt(bufferedReader.readLine());
-			
+
 			// 길드원
 			party = new ArrayList<>();
 			for (int i = 0; i < partySize; i++) {
