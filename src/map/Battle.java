@@ -89,7 +89,9 @@ public class Battle extends Map implements Runnable {
 			printPartyHp();
 			int action = action();
 			int playreIndex = actionplayerIndex();
-
+			playerCount = battleParty();
+			System.out.println(playerCount);
+			
 			int damage = 0;
 			switch (action) {
 			case 0:
@@ -167,7 +169,7 @@ public class Battle extends Map implements Runnable {
 			}
 
 			try {
-				Thread.sleep(700);
+				Thread.sleep(500);
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -186,7 +188,8 @@ public class Battle extends Map implements Runnable {
 				i.MAX_EXP += 5;
 				i.att += 5;
 				i.def += 5;
-				i.hp += 30;
+				i.MAX_HP += 20;
+				i.MAX_MP += 10;
 				input(i.name + " 레벨업!!!");
 			}
 		}
@@ -194,9 +197,9 @@ public class Battle extends Map implements Runnable {
 
 	private int battleParty() {
 		int count = 0;
-		for (Unit i : party) {
-			if (i.hp != 0) {
-				count++;
+		for(Unit i : party) {
+			if(i.hp != 0) {
+				count ++;
 			}
 		}
 		return count;
