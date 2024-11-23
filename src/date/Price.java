@@ -1,17 +1,21 @@
 package date;
 
 public class Price {
-	static int Price = 500000;
+	static int price = 500000;
 
 	public static int getPrice() {
-		return Price;
+		return price;
+	}
+
+	public static void setPrice(int price) {
+		Price.price = price;
 	}
 
 	public static void minusPrice(int price) {
-		Price -= price;
+		price -= price;
 	}
 	
 	public static void plusPrice(int price) {
-		Price += price;
+		price += price;
 	}
 }
