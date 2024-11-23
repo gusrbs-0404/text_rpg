@@ -75,10 +75,16 @@ public class File {
 
 			// 돈
 			fileWriter.write(price + "\n");
-
-			fileWriter.flush();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				fileWriter.close();
+
+			} catch (IOException e) {
+				System.out.println("파일을 닫는 중 오류 발생: " + e.getMessage());
+			}
 		}
 	}
 
@@ -93,6 +99,7 @@ public class File {
 			String[] idArray = bufferedReader.readLine().split("/");
 			for (String id : idArray) {
 				ids.add(id);
+				System.out.println(ids);
 			}
 
 			// 비밀번호
@@ -143,8 +150,18 @@ public class File {
 			// 돈
 			price = Integer.parseInt(bufferedReader.readLine());
 
+			bufferedReader.close();
+			fileReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				bufferedReader.close();
+				fileReader.close();
+
+			} catch (IOException e) {
+				System.out.println("파일을 닫는 중 오류 발생: " + e.getMessage());
+			}
 		}
 	}
 
