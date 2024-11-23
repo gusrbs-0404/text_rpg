@@ -75,7 +75,7 @@ public class File {
 
 			// 돈
 			fileWriter.write(price + "\n");
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -89,66 +89,63 @@ public class File {
 	}
 
 	public static void loadData() {
-
 		try {
 			fileReader = new FileReader(fileName);
 			bufferedReader = new BufferedReader(fileReader);
 
-			// 아이디
-			ids = new ArrayList<>();
+			// 아이디와 비밀번호
+			date.Member.ids.clear(); // 기존 데이터 초기화
 			String[] idArray = bufferedReader.readLine().split("/");
 			for (String id : idArray) {
-				ids.add(id);
-				System.out.println(ids);
+				date.Member.ids.add(id);
 			}
 
-			// 비밀번호
-			pws = new ArrayList<>();
+			date.Member.pws.clear(); // 기존 데이터 초기화
 			String[] pwArray = bufferedReader.readLine().split("/");
 			for (String pw : pwArray) {
-				pws.add(pw);
+				date.Member.pws.add(pw);
 			}
 
 			// 길드 사이즈
 			int guildSize = Integer.parseInt(bufferedReader.readLine());
+			date.PlayerGuild.playerGuild.clear(); // 기존 데이터 초기화
 
 			// 길드원
-			playerGuild = new ArrayList<>();
 			for (int i = 0; i < guildSize; i++) {
 				String[] guildData = bufferedReader.readLine().split(",");
 				Unit unit = new Unit(guildData[0], Integer.parseInt(guildData[1]), Integer.parseInt(guildData[2]),
 						Integer.parseInt(guildData[3]), Integer.parseInt(guildData[4]), Integer.parseInt(guildData[5]),
 						Integer.parseInt(guildData[6]), Integer.parseInt(guildData[7]), Integer.parseInt(guildData[8]),
 						Integer.parseInt(guildData[9]));
-				playerGuild.add(unit);
+				date.PlayerGuild.playerGuild.add(unit);
 			}
 
-			// 파티 사이즈
+			// 파티 데이터
 			int partySize = Integer.parseInt(bufferedReader.readLine());
+			date.PlayerParty.party.clear(); // 기존 데이터 초기화
 
-			// 길드원
-			party = new ArrayList<>();
 			for (int i = 0; i < partySize; i++) {
 				String[] partyData = bufferedReader.readLine().split(",");
 				Unit unit = new Unit(partyData[0], Integer.parseInt(partyData[1]), Integer.parseInt(partyData[2]),
 						Integer.parseInt(partyData[3]), Integer.parseInt(partyData[4]), Integer.parseInt(partyData[5]),
 						Integer.parseInt(partyData[6]), Integer.parseInt(partyData[7]), Integer.parseInt(partyData[8]),
 						Integer.parseInt(partyData[9]));
-				party.add(unit);
+				date.PlayerParty.party.add(unit);
 			}
 
-			// 인벤토리 사이즈
+			// 인벤토리 데이터
 			int inventorySize = Integer.parseInt(bufferedReader.readLine());
-			inventory = new ArrayList<>();
+			date.Inventory.inventory.clear(); // 기존 데이터 초기화
+
 			for (int i = 0; i < inventorySize; i++) {
 				String[] itemData = bufferedReader.readLine().split(",");
 				Item item = new Item(itemData[0], Integer.parseInt(itemData[1]), Integer.parseInt(itemData[2]),
 						Integer.parseInt(itemData[3]));
-				inventory.add(item);
+				date.Inventory.inventory.add(item);
 			}
 
-			// 돈
-			price = Integer.parseInt(bufferedReader.readLine());
+			// 가격 정보
+			date.Price.setPrice(Integer.parseInt(bufferedReader.readLine()));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -156,7 +153,6 @@ public class File {
 			try {
 				bufferedReader.close();
 				fileReader.close();
-
 			} catch (IOException e) {
 				System.out.println("파일을 닫는 중 오류 발생: " + e.getMessage());
 			}
