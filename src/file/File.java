@@ -150,8 +150,6 @@ public class File {
 			// 돈
 			price = Integer.parseInt(bufferedReader.readLine());
 
-			bufferedReader.close();
-			fileReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
