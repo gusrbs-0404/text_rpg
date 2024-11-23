@@ -12,8 +12,6 @@ public class Store extends Map implements Runnable {
 
 	private boolean isStore = true;
 
-	private items.Item storeIntem;
-
 	@Override
 	public void run() {
 		isStore = true;

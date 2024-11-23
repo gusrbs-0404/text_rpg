@@ -91,7 +91,7 @@ public class Battle extends Map implements Runnable {
 			int playreIndex = actionplayerIndex();
 			playerCount = battleParty();
 			System.out.println(playerCount);
-			
+
 			int damage = 0;
 			switch (action) {
 			case 0:
@@ -153,7 +153,7 @@ public class Battle extends Map implements Runnable {
 				damage = 0;
 				break;
 			}
-			date.PlayerParty.party.get(playreIndex).hp -= damage;
+			party.get(playreIndex).hp -= damage;
 
 			if (!isHpUnit(party.get(playreIndex))) {
 				playerCount--;
@@ -197,9 +197,9 @@ public class Battle extends Map implements Runnable {
 
 	private int battleParty() {
 		int count = 0;
-		for(Unit i : party) {
-			if(i.hp != 0) {
-				count ++;
+		for (Unit i : party) {
+			if (i.hp != 0) {
+				count++;
 			}
 		}
 		return count;
