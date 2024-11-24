@@ -90,6 +90,7 @@ public class Map implements Runnable {
 		case "파일로드":
 			input("[파일 로드합니다.]");
 			file.File.loadData();
+			System.out.println(ids);
 			break;
 		default:
 			input("메뉴 잘못 입력했습니다.");
