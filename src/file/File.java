@@ -70,7 +70,8 @@ public class File {
 
 			// 아이템
 			for (Item item : inventory) {
-				fileWriter.write(item.name + "," + item.attack + "," + item.defense + "," + item.price + "\n");
+				fileWriter.write(
+						item.name + "," + item.attack + "," + item.defense + "," + item.price + "," + item.equipable + "\n");
 			}
 
 			// 돈
@@ -140,7 +141,7 @@ public class File {
 			for (int i = 0; i < inventorySize; i++) {
 				String[] itemData = bufferedReader.readLine().split(",");
 				Item item = new Item(itemData[0], Integer.parseInt(itemData[1]), Integer.parseInt(itemData[2]),
-						Integer.parseInt(itemData[3]));
+						Integer.parseInt(itemData[3]), Boolean.parseBoolean(itemData[4]));
 				date.Inventory.inventory.add(item);
 			}
 

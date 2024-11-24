@@ -5,7 +5,7 @@ public class Item {
 	public int attack;
 	public int defense;
 	public int price;
-	private boolean equipable;
+	public boolean equipable;
 
 	public Item(String name, int attack, int defense, int price, boolean equipable) {
 		this.name = name;
@@ -31,9 +31,9 @@ public class Item {
 		return price;
 	}
 
-    public boolean isEquipable() {
-        return equipable;
-    }
+	public boolean isEquipable() {
+		return equipable;
+	}
 
 	@Override
 	public String toString() {
