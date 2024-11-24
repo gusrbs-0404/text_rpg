@@ -123,7 +123,7 @@ public class Battle extends Map implements Runnable {
 				input("플레이어 승리!");
 				exp(monster);
 				if (ranMonsterInteger() == units.Unit.monsterInteger()) {
-					ItemMonsterInteger monsterInteger = new ItemMonsterInteger("몬스터 정수", 1000);
+					ItemMonsterInteger monsterInteger = new ItemMonsterInteger("몬스터 정수", 1000, false);
 					Inventory.add(monsterInteger);
 					input("몬스터 정수를 얻었다!");
 				}

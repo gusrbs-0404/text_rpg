@@ -55,13 +55,13 @@ public class Store extends Map implements Runnable {
 		for (int i = 0; i < 6; i++) {
 			int ranNum = ran.nextInt(3) + 1;
 			if (ranNum == WEAPON) {
-				items.ItemWeapon weapon = new items.ItemWeapon("무기", ranAttack(), ranPrice());
+				items.ItemWeapon weapon = new items.ItemWeapon("무기", ranAttack(), ranPrice(), false);
 				StoreItem.add(weapon);
 			} else if (ranNum == ARMOR) {
-				items.ItemArmor armor = new items.ItemArmor("갑옷", ranDefense(), ranPrice());
+				items.ItemArmor armor = new items.ItemArmor("갑옷", ranDefense(), ranPrice(), false);
 				StoreItem.add(armor);
 			} else if (ranNum == MONSTERINTEGER) {
-				items.ItemMonsterInteger armor = new items.ItemMonsterInteger("몬스터 정수", ranPrice());
+				items.ItemMonsterInteger armor = new items.ItemMonsterInteger("몬스터 정수", ranPrice(), false);
 				StoreItem.add(armor);
 			}
 		}
