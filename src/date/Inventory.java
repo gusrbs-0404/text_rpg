@@ -48,9 +48,5 @@ public class Inventory {
 		}
 		return null;
 	}
-	
-    public boolean isEquipable() {
-        return equipable;
-    }
 
 }
