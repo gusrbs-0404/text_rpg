@@ -1,6 +1,10 @@
 package units;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
+
+import items.Item;
 
 public class Unit {
 	public String name;
@@ -20,6 +24,9 @@ public class Unit {
 	public static int upgradeDef;
 	public static int upgradeExp;
 
+	private static HashMap<String, Item> equippedItems = new HashMap<>();
+	private static ArrayList<Item> inventory = date.Inventory.inventory;
+	private static ArrayList<Unit> party = date.PlayerParty.party;
 	public static Random ran = new Random();
 
 	// player
@@ -45,9 +52,10 @@ public class Unit {
 		this.def = def;
 		this.exp = exp;
 	}
-	
+
 	// 파일로드
-	public Unit(String name, int hp, int MAX_HP ,int mp, int MAX_MP,int att, int def, int exp,int MAX_EXP, int level) {
+	public Unit(String name, int hp, int MAX_HP, int mp, int MAX_MP, int att, int def, int exp, int MAX_EXP,
+			int level) {
 		this.name = name;
 		this.hp = hp;
 		this.MAX_HP = hp;
@@ -68,10 +76,6 @@ public class Unit {
 		String name = name1[name1Size] + " " + player;
 		return name;
 	}
-
-//	public static String getName() {
-//		return name;
-//	}
 
 	public static int newAtt() {
 		int att = ran.nextInt(15) + 1;
@@ -107,6 +111,40 @@ public class Unit {
 	public static int monsterInteger() {
 		int integer = 1;
 		return integer;
+	}
+
+	// 아이템 장착
+	public static void equipItem(String itemName, int index) {
+		for (Item item : inventory) {
+			if (item.getName().equals(itemName) && item.isEquipable()) {
+				equippedItems.put(itemName, item);
+				party.get(index).att += item.getAttack();
+				party.get(index).def += item.getDefense();
+				inventory.remove(item);
+				System.out.println(itemName + "이 장착되었습니다.");
+				return;
+			}
+		}
+		System.out.println("장착할 수 없는 아이템입니다.");
+	}
+
+	// 아이템 해제
+	public void unequipItem(String itemName, int index) {
+		if (equippedItems.containsKey(itemName)) {
+			Item item = equippedItems.get(itemName);
+			party.get(index).att -= item.getAttack();
+			party.get(index).def -= item.getDefense();
+			equippedItems.remove(itemName);
+			inventory.add(item);
+			System.out.println(itemName + "이 해제되었습니다.");
+			return;
+		}
+		System.out.println("장착된 아이템이 아닙니다.");
+	}
+
+	public void showStats(int index) {
+		System.out.println("공격력: " + party.get(index).att);
+		System.out.println("방어력: " + party.get(index).def);
 	}
 
 	@Override

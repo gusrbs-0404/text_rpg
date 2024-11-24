@@ -5,12 +5,14 @@ public class Item {
 	public int attack;
 	public int defense;
 	public int price;
+	private boolean equipable;
 
-	public Item(String name, int attack, int defense, int price) {
+	public Item(String name, int attack, int defense, int price, boolean equipable) {
 		this.name = name;
 		this.attack = attack;
 		this.defense = defense;
 		this.price = price;
+		this.equipable = equipable;
 	}
 
 	public String getName() {
@@ -28,6 +30,10 @@ public class Item {
 	public int getPrice() {
 		return price;
 	}
+
+    public boolean isEquipable() {
+        return equipable;
+    }
 
 	@Override
 	public String toString() {
