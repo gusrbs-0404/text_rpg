@@ -114,14 +114,14 @@ public class Unit {
 	}
 
 	// 아이템 장착
-	public static void equipItem(String itemName, int index) {
+	public static void equipItem(Item items, int index) {
 		for (Item item : inventory) {
-			if (item.getName().equals(itemName) && item.isEquipable()) {
-				equippedItems.put(itemName, item);
+			if (item.getName().equals(items.getName()) && item.isEquipable()) {
+				equippedItems.put(items.getName(), item);
 				party.get(index).att += item.getAttack();
 				party.get(index).def += item.getDefense();
 				inventory.remove(item);
-				System.out.println(itemName + "이 장착되었습니다.");
+				System.out.println(items.getName() + "이 장착되었습니다.");
 				return;
 			}
 		}
@@ -129,22 +129,25 @@ public class Unit {
 	}
 
 	// 아이템 해제
-	public void unequipItem(String itemName, int index) {
-		if (equippedItems.containsKey(itemName)) {
-			Item item = equippedItems.get(itemName);
+	public static void unequipItem(Item items, int index) {
+		if (equippedItems.containsKey(items.getName())) {
+			Item item = equippedItems.get(items.getName());
 			party.get(index).att -= item.getAttack();
 			party.get(index).def -= item.getDefense();
-			equippedItems.remove(itemName);
+			equippedItems.remove(items.getName());
 			inventory.add(item);
-			System.out.println(itemName + "이 해제되었습니다.");
+			System.out.println(items.getName() + "이 해제되었습니다.");
 			return;
 		}
 		System.out.println("장착된 아이템이 아닙니다.");
 	}
 
-	public void showStats(int index) {
+	public static void showStats(int index) {
 		System.out.println("공격력: " + party.get(index).att);
 		System.out.println("방어력: " + party.get(index).def);
+		for (String key : equippedItems.keySet()) {
+			System.out.println("- " + key);
+		}
 	}
 
 	@Override
