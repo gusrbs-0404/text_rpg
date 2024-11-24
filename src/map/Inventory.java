@@ -52,34 +52,13 @@ public class Inventory extends Map implements Runnable {
 		
 		try {
 			input("장비 확인할 파티원 선택 : ");
-			String number = reader.readLine();
-			Unit player = getPartyPlayer(number);
+			String playerNumber = reader.readLine();
+			//Unit player = getPartyPlayer(playerNumber);
 			
 		} catch (Exception e) {
 		}
 	}
-
-	private Unit getPartyPlayer(String number) {
-		// 파티플레이어 선택 메소드
-		if (party.size() == 0) {
-			input("파티원이 없습니다.");
-			return null;
-		}
-
-		int num = -1;
-		try {
-			num = Integer.parseInt(number) - 1;
-			if (num < 0 || num >= party.size()) {
-				input("잘못입력했습니다.");
-				return null;
-			}
-		} catch (Exception e) {
-		}
-
-		Unit player = party.get(num);
-		return player;
-	}
-
+	
 	private void inventory() {
 		if (date.Inventory.size() == 0) {
 			System.out.println("인벤토리에 아무것도 없다..");
@@ -91,13 +70,40 @@ public class Inventory extends Map implements Runnable {
 		// 아이템 이름 입력하면 사용, 장착가능
 		try {
 			input("장착할 아이템 번호 입력 : ");
-			String number = reader.readLine();
+			String itemNumber = reader.readLine();
+			int number = inputNumber(itemNumber);
 			install(number);
+			if(number == -1) {
+				return;
+			}
 		} catch (Exception e) {
 		}
 	}
 
-	private void install(String number) {
+	private int getPartyPlIndex(String number) {
+		try {
+			// 파티플레이어 선택 메소드
+			if (party.size() == 0) {
+				input("파티원이 없습니다.");
+			}
+			
+			int num = -1;
+			try {
+				num = Integer.parseInt(number) - 1;
+				if (num < 0 || num >= party.size()) {
+					input("잘못입력했습니다.");
+				}
+			} catch (Exception e) {
+			}
+			
+			return num;
+
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+
+	private int inputNumber(String number) {
 		// 플레이어마다 착용중인 장비들 따로 출력하기
 		int num = -1;
 		try {
@@ -109,15 +115,30 @@ public class Inventory extends Map implements Runnable {
 			if (date.Inventory.getItem(num).name.equals("몬스터 정수")) {
 				input("몬스터 정수는 착용 할 수 없습니다.");
 			}
-			
-			// 장착할 장비 아이템 선택하고
-			// 파티원 선택
-			// 파티원 장비 상태 출려갷서 보여주고
-			// 장비 장착 
 		} catch (Exception e) {
-			return;
+			return -1;
 		}
-
+		return num;
+	}
+	
+	private void install(int number) {
+		try {
+			// 장착할 장비 아이템 선택하고
+			input("장비 확인할 파티원 선택 : ");
+			String playerNumber = reader.readLine();
+			// 파티원 선택
+			int playerIndex = getPartyPlIndex(playerNumber);
+			
+			printParty();
+			// 파티원 장비 상태 출려갷서 보여주고
+			Unit.showStats(Integer.parseInt(playerNumber) -1);
+			// 장비 장착 
+			
+			Unit.equipItem(date.Inventory.getItem(number), playerIndex);
+			Unit.showStats(playerIndex);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	private void print(ArrayList<Item> item) {
