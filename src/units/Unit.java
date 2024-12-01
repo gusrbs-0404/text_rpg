@@ -25,7 +25,9 @@ public class Unit {
 	public static int upgradeDef;
 	public static int upgradeExp;
 
-	private static HashMap<String, Item> equippedItems = new HashMap<>();
+	// 아이템 장착여부
+	public static HashMap<String, Item> equippedItems = new HashMap<>();
+	
 	private static ArrayList<Item> inventory = date.Inventory.inventory;
 	private static ArrayList<Unit> party = date.PlayerParty.party;
 	public static Random ran = new Random();
