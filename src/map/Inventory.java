@@ -53,7 +53,7 @@ public class Inventory extends Map implements Runnable {
 		try {
 			input("장비 확인할 파티원 선택 : ");
 			String playerNumber = reader.readLine();
-			//Unit player = getPartyPlayer(playerNumber);
+			
 			
 		} catch (Exception e) {
 		}
@@ -95,7 +95,6 @@ public class Inventory extends Map implements Runnable {
 				}
 			} catch (Exception e) {
 			}
-			
 			return num;
 
 		} catch (Exception e) {
@@ -123,17 +122,15 @@ public class Inventory extends Map implements Runnable {
 	
 	private void install(int number) {
 		try {
+			printParty();
 			// 장착할 장비 아이템 선택하고
 			input("장비 확인할 파티원 선택 : ");
 			String playerNumber = reader.readLine();
 			// 파티원 선택
 			int playerIndex = getPartyPlIndex(playerNumber);
 			
-			printParty();
-			// 파티원 장비 상태 출려갷서 보여주고
-			Unit.showStats(Integer.parseInt(playerNumber) -1);
+			System.out.println(playerIndex);
 			// 장비 장착 
-			
 			Unit.equipItem(date.Inventory.getItem(number), playerIndex);
 			Unit.showStats(playerIndex);
 		} catch (Exception e) {
