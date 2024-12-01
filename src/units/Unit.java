@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import items.Item;
+import items.ItemArmor;
 
 public class Unit {
 	public String name;
@@ -121,6 +122,7 @@ public class Unit {
 				party.get(index).att += item.getAttack();
 				party.get(index).def += item.getDefense();
 				inventory.remove(item);
+				item.setEquipable(false);
 				System.out.println(items.getName() + "이 장착되었습니다.");
 				return;
 			}
@@ -136,6 +138,7 @@ public class Unit {
 			party.get(index).def -= item.getDefense();
 			equippedItems.remove(items.getName());
 			inventory.add(item);
+			item.setEquipable(true);
 			System.out.println(items.getName() + "이 해제되었습니다.");
 			return;
 		}
@@ -145,6 +148,7 @@ public class Unit {
 	public static void showStats(int index) {
 		System.out.println("공격력: " + party.get(index).att);
 		System.out.println("방어력: " + party.get(index).def);
+		// 장비장착여부
 		for (String key : equippedItems.keySet()) {
 			System.out.println("- " + key);
 		}
