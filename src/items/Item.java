@@ -12,7 +12,7 @@ public class Item {
 		this.attack = attack;
 		this.defense = defense;
 		this.price = price;
-		this.equipable = equipable;
+		this.equipable = true;
 	}
 
 	public String getName() {
@@ -33,6 +33,10 @@ public class Item {
 
 	public boolean isEquipable() {
 		return equipable;
+	}
+	
+	public void setEquipable(boolean equipable) {
+		this.equipable = equipable;
 	}
 
 	@Override
